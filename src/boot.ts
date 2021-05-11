@@ -1,34 +1,27 @@
-import express, { Request, Response } from "express";
+import { app } from "./app";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import { v4 as uuidv4 } from "uuid";
-import Project from "./entity/Project";
-import User, { UserEvent, UserRole } from "./entity/User";
-
 const PORT = process.env.PORT || 5001;
-
-interface CustomRequest<T> extends Request {
-  body: T;
-}
-
-interface UserRequestBody {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  password: string;
-}
 
 interface ProjectRequestBody {
   userId: string;
   description: string;
 }
 
-const app = express();
+app.listen(PORT, () => {
+  console.log(`⚡️[server]: Server is running at http://0.0.0.0:${PORT}`);
+});
 
-app.use(express.json());
+createConnection()
+  .then((_) => console.log("☁ [database]: Database connection established"))
+  .catch((error) =>
+    console.error(`⚠ [database]: Couldn't connect to the database: ${error}`)
+);
+//const app = express();
 
-app.post(
+//app.use(express.json());
+
+/*app.post(
   "/users",
   async ({ body }: CustomRequest<UserRequestBody>, res: Response) => {
     const uuid = uuidv4();
@@ -115,8 +108,4 @@ const server = app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://0.0.0.0:${PORT}`);
 });
 
-createConnection()
-  .then((_) => console.log("☁ [database]: Database connection established"))
-  .catch((error) =>
-    console.error(`⚠ [database]: Couldn't connect to the database: ${error}`)
-  );
+*/
