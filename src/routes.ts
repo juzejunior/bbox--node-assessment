@@ -5,6 +5,8 @@ import { fetchUserByIdController } from "./modules/user/useCases/fetchUserById";
 import { deleteUserController } from "./modules/user/useCases/deleteUser";
 import { createProjectController } from "./modules/project/useCases/createProject";
 import { fetchprojectsController } from "./modules/project/useCases/fetchProjects";
+import { fetchProjectByIdController } from "./modules/project/useCases/fetchProjectById";
+
 
 const router = Router();
 
@@ -30,6 +32,10 @@ router.post("/projects", (request, response) => {
 
 router.get("/projects",  (request, response) => {
   return fetchprojectsController.handle(request, response);
+});
+
+router.get("/projects/:projectId", (request, response) => {
+  return fetchProjectByIdController.handle(request, response);
 });
 
 export { router };

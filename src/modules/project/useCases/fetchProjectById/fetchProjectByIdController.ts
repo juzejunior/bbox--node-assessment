@@ -1,16 +1,16 @@
 import { Response, Request } from "express";
-import { FetchUserByIdUseCase } from "./fetchProjectByIdUseCase";
+import { FetchProjectByIdUseCase } from "./fetchProjectByIdUseCase";
 
-export class FetchUserByIdController {
-    constructor(private fetchUserByIdUseCase: FetchUserByIdUseCase){}
+export class FetchProjectByIdController {
+    constructor(private fetchProjectByIdUseCase: FetchProjectByIdUseCase){}
 
     async handle(request: Request, response: Response) : Promise<Response> {
         try {
-            const user = await this.fetchUserByIdUseCase.execute(request.params.id);
-            if (user) {
-                return response.status(200).json(user);
+            const project = await this.fetchProjectByIdUseCase.execute(request.params.projectId);
+            if (project) {
+                return response.status(200).json(project);
             } else {
-                return response.status(404).json({ message: "User not found!" });
+                return response.status(404).json({ message: "Project not found!" });
             }
         } catch(err) {
             return response.status(400).json({

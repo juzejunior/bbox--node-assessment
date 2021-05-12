@@ -1,11 +1,11 @@
-import { FetchUserByIdUseCase } from "./fetchProjectByIdUseCase";
-import { PostgresUserRepository } from "../../repositories/implementations/PostgresUserRepository";
-import { FetchUserByIdController } from "./fetchProjectByIdController";
+import { FetchProjectByIdUseCase } from "./fetchProjectByIdUseCase";
+import { PostgresProjectRepository } from "../../repositories/implementations/PostgresProjectRepository";
+import { FetchProjectByIdController } from "./fetchProjectByIdController";
 
-const postgresUserRepository = new PostgresUserRepository();
+const postgresProjectRepository = new PostgresProjectRepository();
 
-const fetchUserByIdUseCase = new FetchUserByIdUseCase(postgresUserRepository);
+const fetchProjectByIdUseCase = new FetchProjectByIdUseCase(postgresProjectRepository);
 
-const fetchUserByIdController = new FetchUserByIdController(fetchUserByIdUseCase);
+const fetchProjectByIdController = new FetchProjectByIdController(fetchProjectByIdUseCase);
 
-export { FetchUserByIdUseCase, fetchUserByIdController };
+export { fetchProjectByIdUseCase, fetchProjectByIdController };
