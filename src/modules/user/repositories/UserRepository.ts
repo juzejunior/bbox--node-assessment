@@ -5,4 +5,5 @@ export interface UserRepository {
     fetchUserById(id: string): Promise<User>;
     findByEmail(email: string): Promise<User>;
     save(user: User): Promise<void>;
+    deleteUser(id: string): Promise<Boolean>;
 }
