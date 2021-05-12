@@ -13,14 +13,6 @@ createConnection()
     console.error(`⚠ [database]: Couldn't connect to the database: ${error}`)
 );
 /*
-app.get("/projects/:projectId", async (req: Request, res: Response) => {
-  const { projectId } = req.params;
-  const projects: Project = await Project.findOne({
-    where: { uuid: projectId },
-  });
-  res.status(200).json(projects);
-});
-
 app.delete("/projects/:projectId", async (req: Request, res: Response) => {
   const { projectId } = req.params;
   const project: Project = await Project.findOne({

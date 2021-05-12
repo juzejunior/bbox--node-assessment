@@ -6,6 +6,7 @@ import { deleteUserController } from "./modules/user/useCases/deleteUser";
 import { createProjectController } from "./modules/project/useCases/createProject";
 import { fetchprojectsController } from "./modules/project/useCases/fetchProjects";
 import { fetchProjectByIdController } from "./modules/project/useCases/fetchProjectById";
+import { deleteProjectController } from "./modules/project/useCases/deleteProject";
 
 
 const router = Router();
@@ -36,6 +37,10 @@ router.get("/projects",  (request, response) => {
 
 router.get("/projects/:projectId", (request, response) => {
   return fetchProjectByIdController.handle(request, response);
+});
+
+router.delete("/projects/:projectId", (request, response) => {
+ return deleteProjectController.handle(request, response);
 });
 
 export { router };
