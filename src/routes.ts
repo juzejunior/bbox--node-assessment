@@ -11,36 +11,36 @@ import { deleteProjectController } from "./modules/project/useCases/deleteProjec
 
 const router = Router();
 
-router.post("/users", (request, response) => {
-  return createUserController.handle(request, response);  
+router.post("/users", (request, response, next) => {
+  return createUserController.handle(request, response, next);  
 });
 
-router.get("/users", (request, response) => {
-  return fetchUsersController.handle(request, response);
+router.get("/users", (request, response, next) => {
+  return fetchUsersController.handle(request, response, next);
 });
 
-router.get("/users/:id", (request, response) => {
-  return fetchUserByIdController.handle(request, response);
+router.get("/users/:id", (request, response, next) => {
+  return fetchUserByIdController.handle(request, response, next);
 });
 
-router.delete("/users/:id", (request, response) => {
-  return deleteUserController.handle(request, response);
+router.delete("/users/:id", (request, response, next) => {
+  return deleteUserController.handle(request, response, next);
 });
 
-router.post("/projects", (request, response) => {
-  return createProjectController.handle(request, response);
+router.post("/projects", (request, response, next) => {
+  return createProjectController.handle(request, response, next);
 });
 
-router.get("/projects",  (request, response) => {
-  return fetchprojectsController.handle(request, response);
+router.get("/projects",  (request, response, next) => {
+  return fetchprojectsController.handle(request, response, next);
 });
 
-router.get("/projects/:projectId", (request, response) => {
-  return fetchProjectByIdController.handle(request, response);
+router.get("/projects/:projectId", (request, response, next) => {
+  return fetchProjectByIdController.handle(request, response, next);
 });
 
-router.delete("/projects/:projectId", (request, response) => {
- return deleteProjectController.handle(request, response);
+router.delete("/projects/:projectId", (request, response, next) => {
+ return deleteProjectController.handle(request, response, next);
 });
 
 export { router };

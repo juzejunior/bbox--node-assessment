@@ -1,10 +1,12 @@
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from "express";
+import HttpException from "../../../../exceptions/HttpException";
+import ServerException from "../../../../exceptions/ServerException";
 import { FetchProjectsUseCase } from "./fetchProjectsUseCase";
 
 export class FetchProjectsController {
     constructor(private fetchProjectsUseCase: FetchProjectsUseCase){}
 
-    async handle(request: Request, response: Response) : Promise<Response> {
+    async handle(request: Request, response: Response, next: NextFunction) : Promise<Response> {
         try {
             const { userId } = request.query;
             let projects = [];
@@ -15,9 +17,7 @@ export class FetchProjectsController {
             }
             return response.status(200).json(projects);
         } catch(err) {
-            return response.status(400).json({
-                message: err.message || 'Server error.'
-            })
+            next(new ServerException(err.message));
         }
     }
 }

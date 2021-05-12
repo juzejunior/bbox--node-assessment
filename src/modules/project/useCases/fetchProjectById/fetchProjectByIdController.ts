@@ -1,21 +1,21 @@
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from "express";
+import ServerException from "../../../../exceptions/ServerException";
+import ProjectNotFoundException from "../../exceptions/ProjectNotFoundException";
 import { FetchProjectByIdUseCase } from "./fetchProjectByIdUseCase";
 
 export class FetchProjectByIdController {
     constructor(private fetchProjectByIdUseCase: FetchProjectByIdUseCase){}
 
-    async handle(request: Request, response: Response) : Promise<Response> {
+    async handle(request: Request, response: Response, next: NextFunction) : Promise<Response> {
         try {
             const project = await this.fetchProjectByIdUseCase.execute(request.params.projectId);
             if (project) {
                 return response.status(200).json(project);
             } else {
-                return response.status(404).json({ message: "Project not found!" });
+                next(new ProjectNotFoundException());
             }
         } catch(err) {
-            return response.status(400).json({
-                message: err.message || 'Server error.'
-            })
+            next(new ServerException(err.message));
         }
     }
 }
