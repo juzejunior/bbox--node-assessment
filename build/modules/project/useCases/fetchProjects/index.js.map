@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../src/modules/project/useCases/fetchProjects/index.ts"],"names":[],"mappings":";;AAAA,+DAA8D;AAC9D,0GAAyG;AACzG,qEAAoE;AAEpE,IAAM,0BAA0B,GAAG,IAAI,qDAAyB,EAAE,CAAC;AAEnE,IAAM,oBAAoB,GAAG,IAAI,2CAAoB,CAAC,0BAA0B,CAAC,CAAC;AAIzE,oDAAoB;AAF7B,IAAM,uBAAuB,GAAG,IAAI,iDAAuB,CAAC,oBAAoB,CAAC,CAAC;AAEnD,0DAAuB"}
